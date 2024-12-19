@@ -20,4 +20,6 @@ go run . -p 4000
 
 ## Build
 
+```
 go build -ldflags="-s -w"
+```
