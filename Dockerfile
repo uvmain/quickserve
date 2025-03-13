@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN go build -o quickserve main.go
+RUN go build -ldflags="-s -w"
 
 FROM gcr.io/distroless/static-debian12
 
