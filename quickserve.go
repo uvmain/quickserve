@@ -21,7 +21,7 @@ func main() {
 		*folder = *f
 	}
 
-	address := fmt.Sprintf("localhost:%s", *port)
+	address := fmt.Sprintf(":%s", *port)
 	fmt.Printf("Starting server on %s\n", address)
 	fmt.Printf("Serving files from %s\n", *folder)
 
