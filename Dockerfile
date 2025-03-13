@@ -12,8 +12,6 @@ WORKDIR /app
 
 COPY --from=builder /app/quickserve /app/
 
-RUN mkdir /data
-
 EXPOSE 3000
 
 ENTRYPOINT ["/app/quickserve", "--folder", "/data"]
