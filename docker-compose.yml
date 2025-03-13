@@ -1,0 +1,8 @@
+services:
+  quickserve:
+    image: quickserve:latest
+    container_name: quickserve
+    volumes:
+      - ./data:/data
+    ports:
+      - "3384:3000"
