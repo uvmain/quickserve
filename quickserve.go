@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+
+	"github.com/rs/cors"
 )
 
 func main() {
@@ -25,8 +27,13 @@ func main() {
 	fmt.Printf("Starting server on %s\n", address)
 	fmt.Printf("Serving files from %s\n", *folder)
 
-	http.Handle("/", http.FileServer(http.Dir(*folder)))
-	err := http.ListenAndServe(address, nil)
+	router := http.NewServeMux()
+
+	router.Handle("/", http.FileServer(http.Dir(*folder)))
+
+	handler := cors.AllowAll().Handler(router)
+
+	err := http.ListenAndServe(address, handler)
 	if err != nil {
 		fmt.Printf("Error starting server: %s\n", err)
 	}
