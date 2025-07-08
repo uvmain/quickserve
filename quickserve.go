@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -33,6 +34,8 @@ func main() {
 			w.WriteHeader(http.StatusNoContent)
 			return
 		}
+		timestamp := time.Now().Format(time.RFC3339Nano)
+		fmt.Printf("%s %s %s\n", timestamp, r.Method, r.RequestURI)
 		http.FileServer(http.Dir(*folder)).ServeHTTP(w, r)
 	})
 
