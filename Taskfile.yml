@@ -1,0 +1,34 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  BINARY_NAME: quickserve
+  BUILD_FLAGS: -ldflags="-s -w"
+
+tasks:
+  default:
+    desc: "Show available tasks"
+    cmds:
+      - task --list
+
+  run:
+    desc: "Run the quickserve application"
+    cmds:
+      - go run .
+
+  run-custom:
+    desc: "Run with custom port and folder (use: task run-custom PORT=8080 FOLDER=./dist)"
+    cmds:
+      - go run . -p {{.PORT | default "3000"}} -f {{.FOLDER | default "./"}}
+
+  build:
+    desc: "Build the quickserve binary with optimizations"
+    cmds:
+      - go build {{.BUILD_FLAGS}}
+
+  clean:
+    desc: "Clean build artifacts"
+    cmds:
+      - rm -f {{.BINARY_NAME}}.exe
+      - rm -f {{.BINARY_NAME}}-*

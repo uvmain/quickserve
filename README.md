@@ -5,10 +5,10 @@
 - Serves all files/folders that are in the same directory as the binary, or at the path specified with --folder or -f
 
 ```
-quickserve -p 4000 -f 'D:/source/temp'
+quickserve -p 4000 -f 'D:/temp'
 ```
 
-## Security Features
+## Security
 
 Quickserve includes several built-in security protections:
 
@@ -27,6 +27,10 @@ Quickserve includes several built-in security protections:
 ```
 go run .
 ```
+or
+```
+task run
+```
 
 ```
 go run . -p 4000
@@ -36,4 +40,8 @@ go run . -p 4000
 
 ```
 go build -ldflags="-s -w"
+```
+or
+```
+task build
 ```
