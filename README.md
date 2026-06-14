@@ -3,6 +3,7 @@
 - Quickly serve static files to localhost
 - Defaults to port 3000, override with --port or -p
 - Serves all files/folders that are in the same directory as the binary, or at the path specified with --folder or -f
+- adding a .password file to a subdirectory will password-protect that directory
 
 `
 quickserve -p 4000 -f 'D:/temp'
@@ -21,6 +22,7 @@ Quickserve includes several built-in security protections:
   - `Referrer-Policy: strict-origin-when-cross-origin`
 - Null Byte Injection Protection: Prevents null byte attacks
 - Request Logging: Logs all requests with timestamps and client IP addresses
+- Basic directory password protection: If a directory (or one of its parent directories) contains a `.password` file, access requires HTTP Basic auth where the password must match the file contents. `.password` files are not served over HTTP
 
 ## Run
 
